@@ -1,0 +1,23 @@
+{
+  "name": "easymoney_v2.0",
+  "version": "2.0.0",
+  "description": "Money wallet integrated with Telegram bot",
+  "main": "app.js",
+  "dependencies": {
+    "node": "^12.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barkuns/easymoney_v2.0.git"
+  },
+  "author": "Alexey Barkun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barkuns/easymoney_v2.0/issues"
+  },
+  "homepage": "https://github.com/barkuns/easymoney_v2.0#readme"
+}
