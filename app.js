@@ -1,9 +1,13 @@
 var express = require('express')
-
+var fs = require('fs')
 var app = express();
+
+const Token = fs.readFileSync('token.txt','utf8')
+//console.log(Token)
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
+  console.log(req)
 });
 
 
