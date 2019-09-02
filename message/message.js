@@ -11,13 +11,14 @@ class Message{
         this.username = msgDataFrom.username||"empty"
         this.text = message.text
     }
-    messageTest(msg){
-        if(!!msg.message)return false;
-        if(!!msg.message.from)return false;
-        if(!!msg.update_id)return false;
-        if(!!message.date)return false;
-        if(!!msgDataFrom.id)return false;
-        if(!!message.text)return false; 
+    messageTest(){
+
+        if(!!this.msg.message)return false;
+        if(!!this.msg.message.from)return false;
+        if(!!this.msg.update_id)return false;
+        if(!!this.msg.message.date)return false;
+        if(!!this.msg.message.from.id)return false;
+        if(!!this.msg.message.text)return false; 
         return true     
 
     }
