@@ -5,6 +5,9 @@ var app = express();
 const Token = fs.readFileSync('token.txt','utf8')
 //console.log(Token)
 
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 app.get('/', function (req, res) {
   res.status(200).send('Hello World!');
   console.log(req.body)
