@@ -1,4 +1,4 @@
-class Message{
+export class Message{
     constructor(msg){
         var message = msg.message
         var msgDataFrom = msg.message.from
