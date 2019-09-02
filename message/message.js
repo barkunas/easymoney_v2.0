@@ -13,12 +13,12 @@ class Message{
     }
     messageTest(){
 
-        if(!!this.msg.message)return false;
-        if(!!this.msg.message.from)return false;
-        if(!!this.msg.update_id)return false;
-        if(!!this.msg.message.date)return false;
-        if(!!this.msg.message.from.id)return false;
-        if(!!this.msg.message.text)return false; 
+        if(!this.msg.message)return false;
+        if(!this.msg.message.from)return false;
+        if(!this.msg.update_id)return false;
+        if(!this.msg.message.date)return false;
+        if(!this.msg.message.from.id)return false;
+        if(!this.msg.message.text)return false; 
         return true     
 
     }
