@@ -11,7 +11,7 @@ class Message{
         this.username = msgDataFrom.username||"empty"
         this.text = message.text
     }
-    messageTest(msg = this.msg){
+    messageTest(msg){
         if(!!msg.message)return false;
         if(!!msg.message.from)return false;
         if(!!msg.update_id)return false;
