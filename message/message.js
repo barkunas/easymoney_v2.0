@@ -1,4 +1,4 @@
-export class Message{
+class Message{
     constructor(msg){
         var message = msg.message
         var msgDataFrom = msg.message.from
@@ -11,3 +11,5 @@ export class Message{
         this.text = message.text
     }
 }
+
+module.exports = Message

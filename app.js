@@ -2,7 +2,7 @@ var express = require('express')
 var fs = require('fs')
 var app = express();
 
-var Message = require('./message/message')
+var Message = require('./message/message.js')
 
 const Token = fs.readFileSync('token.txt','utf8')
 //console.log(Token)
