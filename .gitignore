@@ -2,3 +2,4 @@ node_modules/
 telegramToken.txt
 package-lock.json
 token.txt
+temp.json

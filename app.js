@@ -2,11 +2,13 @@ var express = require('express')
 var fs = require('fs')
 var app = express();
 
+var Message = require('./message/message')
+
 const Token = fs.readFileSync('token.txt','utf8')
 //console.log(Token)
 
-app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(express.json()) 
+app.use(express.urlencoded({ extended: true })) 
 
 app.get('/', function (req, res) {
   res.status(200).send('Hello World!');
@@ -15,7 +17,9 @@ app.get('/', function (req, res) {
 
 app.post('/'+Token+'/', function (req, res) {
     res.status(200).send("ответттт");
-    console.log(req.body)
+    var messageData = req.body
+    var message = new Message()
+    console.log(message)
   });
 
 
