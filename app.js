@@ -16,8 +16,8 @@ app.post('/' + Token + '/', function (req, res) {
     res.status(200).send("update from bot completed");
     var messageData = req.body
     var message = new Message(messageData)
-    if(!message.messageTest()){console.log("can't read msg");break;}
-    console.log(message)
+    if(!message.messageTest()){console.log("can't read msg")} else {
+    console.log(message)}
 });
 
 
