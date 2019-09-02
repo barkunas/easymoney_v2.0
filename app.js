@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
   console.log(req)
 });
 
-app.get('/'+token+'/', function (req, res) {
+app.get('/'+Token+'/', function (req, res) {
     res.send("ответттт");
     console.log(req)
   });
