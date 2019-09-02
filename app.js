@@ -7,12 +7,12 @@ const Token = fs.readFileSync('token.txt','utf8')
 
 app.get('/', function (req, res) {
   res.status(200).send('Hello World!');
-  console.log(req)
+  console.log(req.body)
 });
 
 app.get('/'+Token+'/', function (req, res) {
     res.status(200).send("ответттт");
-    console.log(req)
+    console.log(req.body)
   });
 
 
