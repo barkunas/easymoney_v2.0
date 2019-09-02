@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 app.post('/'+Token+'/', function (req, res) {
     res.status(200).send("ответттт");
     var messageData = req.body
-    var message = new Message()
+    var message = new Message(messageData)
     console.log(message)
   });
 
