@@ -10,6 +10,13 @@ app.get('/', function (req, res) {
   console.log(req)
 });
 
+app.get('/'+token+'/', function (req, res) {
+    res.send("ответттт");
+    console.log(req)
+  });
+
+
+
 
 var port = process.env.PORT || 8080
 app.listen(port, function () {
