@@ -12,7 +12,7 @@ class Message{
         this.text = message.text
     }
     messageTest(){
-
+        console.log(this.msg)
         if(!this.msg.message)return false;
         if(!this.msg.message.from)return false;
         if(!this.msg.update_id)return false;
