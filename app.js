@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 app.post('/' + Token + '/', function (req, res) {
     var messageData = req.body
     var message = new Message(messageData,connection)
-    if (message.messageTest()) {
+    /*if (message.messageTest()) {
         //console.log(message)
         var valuesArr = [message.date, message.userId, +message.text]
         connection.query(
@@ -34,7 +34,7 @@ app.post('/' + Token + '/', function (req, res) {
         );
     } else {
         console.log("can't read msg")
-    }
+    }*/
     res.status(200).send("update from bot completed");
 });
 
