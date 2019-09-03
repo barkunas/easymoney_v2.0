@@ -17,7 +17,7 @@ class Message {
         this.transactionValue = parseFloat(this.text) || 0
         this.sqlRouter = new SQLrouter(mysql)
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
-        
+
     }
     getType(value) {
         var valueNum = parseFloat(value)
@@ -51,9 +51,10 @@ class Message {
     }
     addTransactionInt(mysql) {
         var userId = this.userId
-        var transactionVal = +this.transactionValue
+        var transactionVal = this.transactionValue
         var date = this.date
-        var valuesArr = [date, userId, transactionVal]
+        var valuesArr = [date, userId, +transactionVal]
+        console.log(valuesArr);
         this.sqlRouter.addNumTransaction(valuesArr)
         // mysql.query(
         //     "INSERT INTO messages (date, userId, transaction) VALUES (?);",

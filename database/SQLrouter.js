@@ -10,7 +10,7 @@ class SQLrouter {
             function (error, results, fields) {
                 if (error) throw error;
                 console.log('added in DB ' + valuesArr)
-                new Sender().sendSuccessTransaction(valuesArr[1], transactionVal[2])
+                new Sender().sendSuccessTransaction(valuesArr[1], valuesArr[2])
             }
         );
     }
