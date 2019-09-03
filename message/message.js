@@ -23,7 +23,8 @@ class Message {
             case !isNaN(valueNum) && valueNumStr.length < 11:
                 return "double"; break;
             default:
-                new Sender().sendErrorMsg(this.userId)
+                var userId = this.userId
+                new Sender().sendErrorMsg(userId)
                 return "unknown"; break;
         }
     }
@@ -46,6 +47,8 @@ class Message {
         }
     }
     addTransactionInt(mysql) {
+        var userId = this.userId
+        var transactionVal = this.transactionValue
         var valuesArr = [this.date, this.userId, +this.transactionValue]
         mysql.query(
             "INSERT INTO messages (date, userId, transaction) VALUES (?);",
@@ -53,7 +56,7 @@ class Message {
             function (error, results, fields) {
                 if (error) throw error;
                 console.log('added in DB ' + valuesArr)
-                new Sender().sendSuccessTransaction(this.userId,this.transactionValue)
+                new Sender().sendSuccessTransaction(userId,transactionVal)
             }
         );
     }
