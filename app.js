@@ -22,15 +22,16 @@ app.post('/' + Token + '/', function (req, res) {
     var message = new Message(messageData)
     if (message.messageTest()) {
         //console.log(message)
-        var valuesArr = [message.date,message.userId,message.text]
+        var valuesArr = [message.date, message.userId, +message.text]
         connection.query(
-            "INSERT INTO messages (date, userId, transaction) VALUES (?, ?, ?);"
-, valuesArr,
-            function(error, results, fields) {
-              if (error) throw error;
-              res.json(results);
+            "INSERT INTO messages (date, userId, transaction) VALUES (?);",
+            [valuesArr],
+            function (error, results, fields) {
+                if (error) throw error;
+                console.log('added in DB ' + valuesArr)
+                //res.json(results);
             }
-          );
+        );
     } else {
         console.log("can't read msg")
     }
@@ -39,15 +40,15 @@ app.post('/' + Token + '/', function (req, res) {
 
 //--------------------------------mysqlTest
 app.route('/addUser/:userId')
-  .get(function(req, res) {
-    connection.query(
-      "SELECT * FROM messages;",
-      function(error, results, fields) {
-        if (error) throw error;
-        res.json(results);
-      }
-    );
-  });
+    .get(function (req, res) {
+        connection.query(
+            "SELECT * FROM messages;",
+            function (error, results, fields) {
+                if (error) throw error;
+                res.json(results);
+            }
+        );
+    });
 
 app.get('/status', (req, res) => res.send('Working!'));
 
