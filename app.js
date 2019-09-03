@@ -30,9 +30,9 @@ app.post('/' + Token + '/', function (req, res) {
 
 //--------------------------------mysqlTest
 app.route('/addUser/:userId')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     connection.query(
-      "SELECT * FROM easyMoneyDB.messages;", req.params.userId,
+      "SELECT * FROM messages;", req.params.userId,
       function(error, results, fields) {
         if (error) throw error;
         res.json(results);
