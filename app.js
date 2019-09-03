@@ -1,7 +1,12 @@
 var express = require('express')
 var fs = require('fs')
-var app = express();
+require('dotenv').config()
+const bodyParser = require('body-parser');
+const connection = require('./database/database');
 var Message = require('./message/message.js')
+
+var app = express();
+
 const Token = fs.readFileSync('token.txt', 'utf8')
 
 app.use(express.json())
@@ -22,6 +27,26 @@ app.post('/' + Token + '/', function (req, res) {
     }
     res.status(200).send("update from bot completed");
 });
+
+//--------------------------------mysqlTest
+app.route('/addUser/:userId')
+  .get(function(req, res, next) {
+    connection.query(
+      "SELECT * FROM easyMoneyDB.messages;", req.params.userId,
+      function(error, results, fields) {
+        if (error) throw error;
+        res.json(results);
+      }
+    );
+  });
+
+app.get('/status', (req, res) => res.send('Working!'));
+
+//--------------------------------endMysqlTest
+
+
+
+
 
 
 
