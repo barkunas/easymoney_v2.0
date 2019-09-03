@@ -1,5 +1,0 @@
-class MessageTest{
-    constructor(msg){
-
-    }
-}
