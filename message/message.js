@@ -53,7 +53,7 @@ class Message {
             function (error, results, fields) {
                 if (error) throw error;
                 console.log('added in DB ' + valuesArr)
-                new Sender(this.userId,this.transactionValue).sendSuccessTransaction()
+                new Sender().sendSuccessTransaction(this.userId,this.transactionValue)
             }
         );
     }

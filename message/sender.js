@@ -10,13 +10,13 @@ class Sender{
         this.Token = process.env.TOKEN
         this.myBot = new TelegramBot(this.Token, { polling: false });
     }
-    sendErrorMsg(){
+    sendErrorMsg(userId){
         var text = "упс, что-то пошло не так"
-        this.myBot.sendMessage(this.userId,text)
+        this.myBot.sendMessage(userId,text)
     }
-    sendSuccessTransaction(){
-        var text = "Записал "+ this.value
-        this.myBot.sendMessage(this.userId,text)
+    sendSuccessTransaction(userId,value){
+        var text = "Записал "+ value
+        this.myBot.sendMessage(userId,text)
 
     }
 }
