@@ -12,14 +12,13 @@ class Message{
         this.text = message.text
     }
     messageTest(){
-        // console.log(this.msg)
-        if( !this.msg.message||
-            !this.msg.message.from||
-            !this.msg.update_id||
-            !this.msg.message.date||
-            !this.msg.message.from.id||
-            !this.msg.message.text ) return false; 
-        return true
+        var result = !this.msg.message&&
+        !this.msg.message.from&&
+        !this.msg.update_id&&
+        !this.msg.message.date&&
+        !this.msg.message.from.id&&
+        !this.msg.message.text
+        return result
 
     }
 }
