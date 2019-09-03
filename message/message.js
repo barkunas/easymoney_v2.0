@@ -10,8 +10,16 @@ class Message {
         this.last_name = msgDataFrom.last_name || "empty"
         this.username = msgDataFrom.username || "empty"
         this.text = message.text
-        this.type = !isNaN(message.text)&&message.text.length<11 ? "int" : "other";
+        this.type = getType(message.text);
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
+    }
+    getType(value) {
+        switch (value) {
+            case "" || undefined || null:
+                return "unknown"; break;
+            case !isNaN(value) && value.length < 11:
+                return "double"; break;
+        }
     }
     messageTest() {
         var result = this.msg.message &&
@@ -25,7 +33,7 @@ class Message {
     }
     messageRoute(mysql) {
         switch (this.type) {
-            case "int":
+            case "double":
                 this.addTransactionInt(mysql)
                 break;
 
@@ -39,7 +47,6 @@ class Message {
             function (error, results, fields) {
                 if (error) throw error;
                 console.log('added in DB ' + valuesArr)
-                //res.json(results);
             }
         );
     }
