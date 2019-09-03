@@ -19,26 +19,10 @@ app.get('/', function (req, res) {
 
 app.post('/' + Token + '/', function (req, res) {
     var messageData = req.body
-    var message = new Message(messageData,connection)
-    /*if (message.messageTest()) {
-        //console.log(message)
-        var valuesArr = [message.date, message.userId, +message.text]
-        connection.query(
-            "INSERT INTO messages (date, userId, transaction) VALUES (?);",
-            [valuesArr],
-            function (error, results, fields) {
-                if (error) throw error;
-                console.log('added in DB ' + valuesArr)
-                //res.json(results);
-            }
-        );
-    } else {
-        console.log("can't read msg")
-    }*/
+    var message = new Message(messageData, connection)
     res.status(200).send("update from bot completed");
 });
 
-//--------------------------------mysqlTest
 app.route('/addUser/:userId')
     .get(function (req, res) {
         connection.query(
@@ -51,14 +35,6 @@ app.route('/addUser/:userId')
     });
 
 app.get('/status', (req, res) => res.send('Working!'));
-
-//--------------------------------endMysqlTest
-
-
-
-
-
-
 
 
 var port = process.env.PORT || /*3000*/ 8080

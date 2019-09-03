@@ -10,7 +10,7 @@ class Message {
         this.last_name = msgDataFrom.last_name || "empty"
         this.username = msgDataFrom.username || "empty"
         this.text = message.text
-        this.type = !isNaN(message.text) ? "int" : "other";
+        this.type = !isNaN(message.text)&&message.text.length<11 ? "int" : "other";
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
     }
     messageTest() {
