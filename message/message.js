@@ -11,13 +11,15 @@ class Message {
         this.username = msgDataFrom.username || "empty"
         this.text = message.text
         this.type = this.getType(message.text);
+        this.transactionValue = parseFloat(this.text)||0
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
     }
     getType(value) {
-        switch (value) {
+        switch (true) {
             case !isNaN(value) && value.length < 11:
+
                 return "double"; break;
-            default: return "unknown"; break; 
+            default: return "unknown"; break;
         }
     }
     messageTest() {
@@ -39,7 +41,7 @@ class Message {
         }
     }
     addTransactionInt(mysql) {
-        var valuesArr = [this.date, this.userId, +this.text]
+        var valuesArr = [this.date, this.userId, +this.transactionValue]
         mysql.query(
             "INSERT INTO messages (date, userId, transaction) VALUES (?);",
             [valuesArr],
