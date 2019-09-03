@@ -7,8 +7,8 @@ var Message = require('./message/message.js')
 
 var app = express();
 
-const Token = fs.readFileSync('token.txt', 'utf8')
-
+process.env.TOKEN = fs.readFileSync('token.txt', 'utf8')
+var Token = process.env.TOKEN
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
