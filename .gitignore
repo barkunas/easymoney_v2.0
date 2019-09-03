@@ -3,3 +3,4 @@ telegramToken.txt
 package-lock.json
 token.txt
 temp.json
+.env
