@@ -5,6 +5,7 @@ var fs = require('fs')
 require('dotenv').config()
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
+module.exports.connection = connection
 var Message = require('./message/message.js')
 
 var app = express();

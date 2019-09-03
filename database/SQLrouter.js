@@ -1,0 +1,19 @@
+var Sender = require('./sender.js')
+class SQLrouter {
+    constructor(sql) {
+        this.sql = sql
+    }
+    addNumTransaction(valuesArr) {
+        this.mysql.query(
+            "INSERT INTO messages (date, userId, transaction) VALUES (?);",
+            [valuesArr],
+            function (error, results, fields) {
+                if (error) throw error;
+                console.log('added in DB ' + valuesArr)
+                new Sender().sendSuccessTransaction(valuesArr[1], transactionVal[2])
+            }
+        );
+    }
+
+}
+module.exports = SQLrouter

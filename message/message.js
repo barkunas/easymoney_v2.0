@@ -1,4 +1,5 @@
 var Sender = require('./sender.js')
+var SQLrouter = require('../database/SQLrouter.js')
 
 class Message {
     constructor(msg, mysql) {
@@ -15,6 +16,7 @@ class Message {
         this.type = this.getType(message.text);
         this.transactionValue = parseFloat(this.text) || 0
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
+        this.sqlRouter = new SQLrouter(mysql)
     }
     getType(value) {
         var valueNum = parseFloat(value)
@@ -49,16 +51,18 @@ class Message {
     addTransactionInt(mysql) {
         var userId = this.userId
         var transactionVal = this.transactionValue
-        var valuesArr = [this.date, this.userId, +this.transactionValue]
-        mysql.query(
-            "INSERT INTO messages (date, userId, transaction) VALUES (?);",
-            [valuesArr],
-            function (error, results, fields) {
-                if (error) throw error;
-                console.log('added in DB ' + valuesArr)
-                new Sender().sendSuccessTransaction(userId,transactionVal)
-            }
-        );
+        var date = this.date
+        var valuesArr = [date, userId, +transactionVal]
+        this.sqlRouter.addNumTransaction(valuesArr)
+        // mysql.query(
+        //     "INSERT INTO messages (date, userId, transaction) VALUES (?);",
+        //     [valuesArr],
+        //     function (error, results, fields) {
+        //         if (error) throw error;
+        //         console.log('added in DB ' + valuesArr)
+        //         new Sender().sendSuccessTransaction(userId,transactionVal)
+        //     }
+        // );
     }
 }
 
