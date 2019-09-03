@@ -14,8 +14,8 @@ class Message {
         this.username = msgDataFrom.username || "empty"
         this.text = message.text
         this.type = this.getType(message.text);
-        this.sqlRouter = new SQLrouter(mysql)
         this.transactionValue = parseFloat(this.text) || 0
+        this.sqlRouter = new SQLrouter(mysql)
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
         
     }
