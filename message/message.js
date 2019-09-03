@@ -23,7 +23,7 @@ class Message {
             case !isNaN(valueNum) && valueNumStr.length < 11:
                 return "double"; break;
             default:
-                new Sender(this.userId).sendErrorMsg()
+                new Sender().sendErrorMsg(this.userId)
                 return "unknown"; break;
         }
     }
