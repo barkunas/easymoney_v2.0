@@ -10,7 +10,7 @@ class Message {
         this.last_name = msgDataFrom.last_name || "empty"
         this.username = msgDataFrom.username || "empty"
         this.text = message.text
-        this.type = getType(message.text);
+        this.type = this.getType(message.text);
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
     }
     getType(value) {
