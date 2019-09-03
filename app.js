@@ -21,7 +21,16 @@ app.post('/' + Token + '/', function (req, res) {
     var messageData = req.body
     var message = new Message(messageData)
     if (message.messageTest()) {
-        console.log(message)
+        //console.log(message)
+        var valuesArr = [message.date,message.userId,message.text]
+        connection.query(
+            "INSERT INTO messages (date, userId, transaction) VALUES (?, ?, ?);"
+, valuesArr,
+            function(error, results, fields) {
+              if (error) throw error;
+              res.json(results);
+            }
+          );
     } else {
         console.log("can't read msg")
     }
@@ -32,7 +41,7 @@ app.post('/' + Token + '/', function (req, res) {
 app.route('/addUser/:userId')
   .get(function(req, res) {
     connection.query(
-      "SELECT * FROM messages;", req.params.userId,
+      "SELECT * FROM messages;",
       function(error, results, fields) {
         if (error) throw error;
         res.json(results);
