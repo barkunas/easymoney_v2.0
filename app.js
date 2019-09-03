@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
 
 app.post('/' + Token + '/', function (req, res) {
     var messageData = req.body
-    var message = new Message(messageData)
+    var message = new Message(messageData,connection)
     if (message.messageTest()) {
         //console.log(message)
         var valuesArr = [message.date, message.userId, +message.text]

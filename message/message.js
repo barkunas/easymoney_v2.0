@@ -1,5 +1,5 @@
 class Message {
-    constructor(msg) {
+    constructor(msg, mysql) {
         this.msg = msg
         var message = msg.message
         var msgDataFrom = msg.message.from
@@ -10,6 +10,8 @@ class Message {
         this.last_name = msgDataFrom.last_name || "empty"
         this.username = msgDataFrom.username || "empty"
         this.text = message.text
+        this.type = !isNaN(message.text) ? "int" : "other";
+        this.messageTest() ? messageRoute(mysql) : console.log("can't read msg")
     }
     messageTest() {
         var result = this.msg.message &&
@@ -20,6 +22,26 @@ class Message {
             this.msg.message.text;
         return result
 
+    }
+    messageRoute(mysql) {
+        switch (this.type) {
+            case "int":
+                addTransactionInt(mysql)
+                break;
+
+        }
+    }
+    addTransactionInt(mysql) {
+        var valuesArr = [this.date, this.userId, +this.text]
+        mysql.query(
+            "INSERT INTO messages (date, userId, transaction) VALUES (?);",
+            [valuesArr],
+            function (error, results, fields) {
+                if (error) throw error;
+                console.log('added in DB ' + valuesArr)
+                //res.json(results);
+            }
+        );
     }
 }
 
