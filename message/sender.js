@@ -1,15 +1,23 @@
 var TelegramBot = require('node-telegram-bot-api');
-var Token = process.env.TOKEN
-var myBot = new TelegramBot(Token, { polling: false });
+
 
 
 class Sender{
     constructor(userId,value,type){
-
+        this.userId = userId
+        this.value = value
+        this.type = type
+        this.Token = process.env.TOKEN
+        this.myBot = new TelegramBot(this.Token, { polling: false });
     }
-    sendErrorMsg(user){
+    sendErrorMsg(){
         var text = "упс, что-то пошло не так"
-        myBot.sendMessage(user,text)
+        this.myBot.sendMessage(this.userId,text)
+    }
+    sendSuccessTransaction(){
+        var text = "Записал "+ value
+        this.myBot.sendMessage(this.userId,text)
+
     }
 }
 module.exports = Sender

@@ -23,7 +23,7 @@ class Message {
             case !isNaN(valueNum) && valueNumStr.length < 11:
                 return "double"; break;
             default:
-                new Sender().sendErrorMsg(this.userId)
+                new Sender(this.userId).sendErrorMsg()
                 return "unknown"; break;
         }
     }
@@ -53,6 +53,7 @@ class Message {
             function (error, results, fields) {
                 if (error) throw error;
                 console.log('added in DB ' + valuesArr)
+                new Sender(this.userId).sendSuccessTransaction()
             }
         );
     }
