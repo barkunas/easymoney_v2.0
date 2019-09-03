@@ -4,7 +4,7 @@ class SQLrouter {
         this.sql = sql
     }
     addNumTransaction(valuesArr) {
-        this.mysql.query(
+        this.sql.query(
             "INSERT INTO messages (date, userId, transaction) VALUES (?);",
             [valuesArr],
             function (error, results, fields) {
