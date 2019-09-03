@@ -1,3 +1,5 @@
+var Sender = require('./sender.js')
+
 class Message {
     constructor(msg, mysql) {
         this.msg = msg
@@ -11,15 +13,18 @@ class Message {
         this.username = msgDataFrom.username || "empty"
         this.text = message.text
         this.type = this.getType(message.text);
-        this.transactionValue = parseFloat(this.text)||0
+        this.transactionValue = parseFloat(this.text) || 0
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
     }
     getType(value) {
+        var valueNum = parseFloat(value)
+        var valueNumStr = String(valueNum)
         switch (true) {
-            case !isNaN(value) && value.length < 11:
-
+            case !isNaN(valueNum) && valueNumStr.length < 11:
                 return "double"; break;
-            default: return "unknown"; break;
+            default:
+                new Sender().sendErrorMsg(this.userId)
+                return "unknown"; break;
         }
     }
     messageTest() {
