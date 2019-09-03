@@ -15,7 +15,7 @@ class Sender{
         this.myBot.sendMessage(this.userId,text)
     }
     sendSuccessTransaction(){
-        var text = "Записал "+ value
+        var text = "Записал "+ this.value
         this.myBot.sendMessage(this.userId,text)
 
     }
