@@ -11,7 +11,7 @@ class Message {
         this.username = msgDataFrom.username || "empty"
         this.text = message.text
         this.type = !isNaN(message.text) ? "int" : "other";
-        this.messageTest() ? messageRoute(mysql) : console.log("can't read msg")
+        this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
     }
     messageTest() {
         var result = this.msg.message &&
@@ -26,7 +26,7 @@ class Message {
     messageRoute(mysql) {
         switch (this.type) {
             case "int":
-                addTransactionInt(mysql)
+                this.addTransactionInt(mysql)
                 break;
 
         }
