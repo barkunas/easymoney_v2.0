@@ -15,10 +15,9 @@ class Message {
     }
     getType(value) {
         switch (value) {
-            case "" || undefined || null:
-                return "unknown"; break;
             case !isNaN(value) && value.length < 11:
                 return "double"; break;
+            default: return "unknown"; break; 
         }
     }
     messageTest() {
