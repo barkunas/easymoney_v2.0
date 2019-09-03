@@ -50,9 +50,9 @@ class Message {
     }
     addTransactionInt(mysql) {
         var userId = this.userId
-        var transactionVal = this.transactionValue
+        var transactionVal = +this.transactionValue
         var date = this.date
-        var valuesArr = [date, userId, +transactionVal]
+        var valuesArr = [date, userId, transactionVal]
         this.sqlRouter.addNumTransaction(valuesArr)
         // mysql.query(
         //     "INSERT INTO messages (date, userId, transaction) VALUES (?);",

@@ -1,4 +1,4 @@
-var Sender = require('./sender.js')
+var Sender = require('../message/sender.js')
 class SQLrouter {
     constructor(sql) {
         this.sql = sql
