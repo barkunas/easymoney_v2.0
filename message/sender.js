@@ -19,6 +19,9 @@ class Sender {
         this.myBot.sendMessage(userId, text)
 
     }
+    sendMessage(userId, text){
+        this.myBot.sendMessage(userId, text)
+    }
     sendCurrentBalance(userId, value) {
         var text = "current balance " + value
         this.myBot.sendMessage(userId, text)
@@ -29,7 +32,7 @@ class Sender {
                     "Пример: 10300\n"+
                     "Для добовления расходов введите число со знаком минус вначале\n"+
                     "Пример: -10300\n"+
-                    "На данный момент вы можете посомтреть текущий баланс просто написав слово 'отчет'\n"+
+                    "На данный момент вы можете посмотреть текущий баланс просто написав слово 'отчет'\n"+
                     "Пример: отчет\n"
         this.myBot.sendMessage(userId, text)
     }
