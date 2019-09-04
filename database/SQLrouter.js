@@ -20,7 +20,7 @@ class SQLrouter {
             userId,
             function (error, results, fields) {
                 if (error) throw error;
-                console.log('get current balance user ' + userId = results[0]['SUM(transaction)'])
+                console.log('get current balance user ' + userId +'='+ results[0]['SUM(transaction)'])
                 new Sender().sendCurrentBalance(userId, results[0]['SUM(transaction)'])
             }
         )
