@@ -5,7 +5,7 @@ class Message {
     constructor(msg, mysql) {
         this.msg = msg
         var message = msg.message||msg.edited_message
-        var msgDataFrom = msg.message.from||msg.edited_message.from
+        var msgDataFrom = message.from
         this.update_id = msg.update_id
         this.date = message.date
         this.userId = msgDataFrom.id
@@ -27,6 +27,8 @@ class Message {
                 return "double"; break;
             case value=="отчет":
                 return "smplSumm"; break;
+            case value=="/start": 
+                return "start"; break;
             default:
                 var userId = this.userId
                 new Sender().sendErrorMsg(userId)
@@ -50,6 +52,10 @@ class Message {
                 break;
             case "smplSumm":
                 this.getSummbyUser(mysql)
+                break;
+            case "start":
+                var userId = this.userId
+                new Sender().sendStartMessage(userId)
                 break;
 
         }

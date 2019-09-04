@@ -23,5 +23,9 @@ class Sender {
         var text = "current balance " + value
         this.myBot.sendMessage(userId, text)
     }
+    sendStartMessage(userId, value){
+        var text = "start \n message" + value
+        this.myBot.sendMessage(userId, text)
+    }
 }
 module.exports = Sender
