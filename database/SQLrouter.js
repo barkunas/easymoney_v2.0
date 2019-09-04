@@ -25,6 +25,5 @@ class SQLrouter {
             }
         )
     }
-
 }
 module.exports = SQLrouter
