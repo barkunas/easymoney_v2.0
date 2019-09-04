@@ -23,8 +23,14 @@ class Sender {
         var text = "current balance " + value
         this.myBot.sendMessage(userId, text)
     }
-    sendStartMessage(userId, value){
-        var text = "start \n message" + value
+    sendStartMessage(userId){
+        var text = "Привет! Это Бот по контролю за доходами и расходамии.\n"+
+                    "Для добавления доходов просто введите число.\n"+
+                    "Пример: 10300\n"+
+                    "Для добовления расходов введите число со знаком минус вначале\n"+
+                    "Пример: 10300\n"+
+                    "На данный момент вы можете посомтреть текущий баланс просто написав слово 'отчет'\n"+
+                    "Пример: отчет\n"
         this.myBot.sendMessage(userId, text)
     }
 }
