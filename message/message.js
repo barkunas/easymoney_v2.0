@@ -4,15 +4,15 @@ var SQLrouter = require('../database/SQLrouter.js')
 class Message {
     constructor(msg, mysql) {
         this.msg = msg
-        var message = msg.message
-        var msgDataFrom = msg.message.from
+        var message = msg.message||msg.edited_message
+        var msgDataFrom = msg.message.from||msg.edited_message.from
         this.update_id = msg.update_id
         this.date = message.date
         this.userId = msgDataFrom.id
         this.first_name = msgDataFrom.first_name || "empty"
         this.last_name = msgDataFrom.last_name || "empty"
         this.username = msgDataFrom.username || "empty"
-        this.text = message.text
+        this.text = message.text||undefined
         this.type = this.getType(message.text);
         this.transactionValue = parseFloat(this.text) || 0
         this.sqlRouter = new SQLrouter(mysql)
