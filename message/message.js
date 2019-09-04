@@ -25,6 +25,8 @@ class Message {
         switch (true) {
             case !isNaN(valueNum) && valueNumStr.length < 11:
                 return "double"; break;
+            case value=="отчет":
+                return "smplSumm"; break;
             default:
                 var userId = this.userId
                 new Sender().sendErrorMsg(userId)
@@ -46,8 +48,15 @@ class Message {
             case "double":
                 this.addTransactionInt(mysql)
                 break;
+            case "smplSumm":
+                this.getSummbyUser(mysql)
+                break;
 
         }
+    }
+    getSummbyUser(mysql){
+        var userId = this.userId
+        this.sqlRouter.getSummbyUser(userId)
     }
     addTransactionInt(mysql) {
         var userId = this.userId
@@ -56,15 +65,6 @@ class Message {
         var valuesArr = [date, userId, +transactionVal]
         console.log(valuesArr);
         this.sqlRouter.addNumTransaction(valuesArr)
-        // mysql.query(
-        //     "INSERT INTO messages (date, userId, transaction) VALUES (?);",
-        //     [valuesArr],
-        //     function (error, results, fields) {
-        //         if (error) throw error;
-        //         console.log('added in DB ' + valuesArr)
-        //         new Sender().sendSuccessTransaction(userId,transactionVal)
-        //     }
-        // );
     }
 }
 

@@ -14,6 +14,16 @@ class SQLrouter {
             }
         );
     }
+    getSummbyUser(userId){
+        this.sql.query(
+            "Select SUM(transaction) from messages WHERE userId='?';",
+            userId,
+            function (error, results, fields) {
+                if (error) throw error;
+                console.log('get current balance user ' + userId)
+                new Sender().sendCurrentBalance(userId, results)
+            }
+    }
 
 }
 module.exports = SQLrouter
