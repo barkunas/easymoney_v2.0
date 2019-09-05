@@ -15,6 +15,7 @@ class Message {
         this.text = message.text||undefined
         this.type = this.getType(message.text);
         this.transactionValue = parseFloat(this.text) || 0
+        this.discription =  message.text.replace(/[-0-9.][-0-9.,]+[0-9.]/g,"")||"other"
         this.sqlRouter = new SQLrouter(mysql)
         this.messageTest() ? this.messageRoute(mysql) : console.log("can't read msg")
 
@@ -68,7 +69,8 @@ class Message {
         var userId = this.userId
         var transactionVal = this.transactionValue
         var date = this.date
-        var valuesArr = [date, userId, +transactionVal]
+        var discription = this.discription
+        var valuesArr = [date, userId, +transactionVal,discription]
         console.log(valuesArr);
         this.sqlRouter.addNumTransaction(valuesArr)
     }

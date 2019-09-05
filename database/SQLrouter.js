@@ -5,12 +5,12 @@ class SQLrouter {
     }
     addNumTransaction(valuesArr) {
         this.sql.query(
-            "INSERT INTO messages (date, userId, transaction) VALUES (?);",
+            "INSERT INTO messages (date, userId, transaction, discription) VALUES (?);",
             [valuesArr],
             function (error, results, fields) {
                 if (error) throw error;
                 console.log('added in DB ' + valuesArr)
-                new Sender().sendSuccessTransaction(valuesArr[1], valuesArr[2])
+                new Sender().sendSuccessTransaction(valuesArr[1], valuesArr[2],valuesArr[3])
             }
         );
     }
